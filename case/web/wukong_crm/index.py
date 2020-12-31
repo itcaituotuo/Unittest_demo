@@ -3,7 +3,7 @@
 # 时间：2020/12/17 19:43
 
 # Unittest_demo\case\web\wukong_crm\index.py
-# 悟空CRM系统首页相关的测试用例
+# 悟空CRM系统 首页相关的测试用例
 
 from selenium import webdriver
 import unittest
