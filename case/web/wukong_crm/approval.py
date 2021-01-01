@@ -55,11 +55,14 @@ class TestApproval(unittest.TestCase):
         # 调用approval_all()方法
         # 审批内容输入：请假审批；
         # 开始时间选择：动态获取当前时间
-        # 结束时间选择：2021-12-26 17:59:58；
+        # 结束时间选择：动态获取；
         # 时长输入24；
         date1 = time.strftime('%Y-%m-%d', time.localtime(time.time()))
         time1 = time.strftime('%H-%M-%S', time.localtime(time.time()))
-        Approval(self.driver).approval_all("请假审批", date1, time1, "2021-12-26", "17:59:58", 24)
+
+        date2 = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+        time2 = time.strftime('%H-%M-%S', time.localtime(time.time()))
+        Approval(self.driver).approval_all("请假审批", date1, time1, date2, time2, 24)
 
         # 调用scroll_end()方法，将div中内嵌的滚动条滚动条移动到底部
         Approval(self.driver).scroll_end()
