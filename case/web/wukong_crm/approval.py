@@ -17,6 +17,7 @@ from public.wukong_crm.login import Login
 class TestApproval(unittest.TestCase):
     def setUp(self):
         """ setUp方法，初始化，最先执行，比如：每次都会打开页面 """
+
         self.driver = webdriver.Chrome()
         # 打开悟空CRM系统
         self.driver.get("http://101.133.169.100:8088/")
@@ -53,10 +54,12 @@ class TestApproval(unittest.TestCase):
 
         # 调用approval_all()方法
         # 审批内容输入：请假审批；
-        # 开始时间选择：2021-12-25 17:59:58；
+        # 开始时间选择：动态获取当前时间
         # 结束时间选择：2021-12-26 17:59:58；
         # 时长输入24；
-        Approval(self.driver).approval_all("请假审批", "2021-12-25", "17:59:58", "2021-12-26", "17:59:58", 24)
+        date1 = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+        time1 = time.strftime('%H-%M-%S', time.localtime(time.time()))
+        Approval(self.driver).approval_all("请假审批", date1, time1, "2021-12-26", "17:59:58", 24)
 
         # 调用scroll_end()方法，将div中内嵌的滚动条滚动条移动到底部
         Approval(self.driver).scroll_end()
@@ -358,6 +361,7 @@ class TestApproval(unittest.TestCase):
         # 提示开始时间不能等于结束时间
         # NoSuchElementException，找不到错误提示，说明没有给出提示
         self.assertTrue(self.driver.find_element_by_xpath('/html/body/div[8]/p').is_displayed())
+
     def testApproval_13(self):
         """WKCRM_014. 开始时间大于结束时间"""
 
