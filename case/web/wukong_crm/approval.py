@@ -28,7 +28,7 @@ class TestApproval(unittest.TestCase):
         print("start_time:" + time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime(time.time())))
 
     def tearDown(self):
-        """  最后执行，比如：每次执行完成都会截图 """
+        """  tearDown()方法，最后执行，比如：每次执行完成都会截图 """
         file_dir = "D:/Desktop/Testman_Study/图库/screen/"
         # 如果找不到文件夹，则新建一个文件夹
         if not os.path.exists(file_dir):
